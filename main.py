@@ -1,6 +1,8 @@
-def main():
-    print("Hello from test-pre-commit!")
+def add(x: int, y: int) -> int:
+    result: int = x + y
+    return result
 
 
-if __name__ == "__main__":
-    main()
+def greet(name: str) -> str:
+    message: str = f"Hello, {name}!"
+    return message

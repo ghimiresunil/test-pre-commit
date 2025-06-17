@@ -121,7 +121,6 @@ repos:
         entry: mypy
         args:
           - --disallow-untyped-defs # disallow functions without type annotations
-          - --disallow-untyped-vars # disallow variables without type annotations
         exclude: docs
 
   - repo: local
