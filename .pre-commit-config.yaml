@@ -125,9 +125,9 @@ repos:
 
   - repo: local
     hooks:
-      - id: check-commit-message-prefix
-        name: Check commit message starts with allowed prefix
-        entry: bash -c '[[ "$1" =~ ^(chore:|docs:|test:|bug:) ]]' --
-        language: system
+      - id: conventional-commit-prefix
+        name: Enforce Conventional Commit Prefix
+        language: pygrep
+        entry: '\A(?!((feat|fix|chore|docs|style|refactor|perf|test|ci|build|revert)(\(.+\))?:\s)).*'
+        args: [--multiline]
         stages: [commit-msg]
-        pass_filenames: false
