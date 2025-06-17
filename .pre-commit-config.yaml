@@ -1,0 +1,155 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+        name: Check for added large files
+        description: Prevent giant files from being committed
+        entry: check-added-large-files
+        args: [--maxkb=500]
+
+      - id: check-ast
+        name: Check Python AST
+        description: Check whether the files parse as valid Python
+        entry: check-ast
+        types: [python]
+
+      - id: check-case-conflict
+        name: Check for case conflicts
+        description: Check for files that would conflict due to filename case differences
+        entry: check-case-conflict
+
+      - id: check-merge-conflict
+        name: Check for merge conflicts
+        description: Check for files that contain merge conflict strings
+        entry: check-merge-conflict
+        types: [text]
+
+      - id: debug-statements
+        name: Debug statements (Python)
+        description: Check for debugger imports and `breakpoint()` calls
+        entry: debug-statement-hook
+        types: [python]
+
+      - id: end-of-file-fixer
+        name: Fix end of files
+        description: Ensures that a file ends with a newline
+        entry: end-of-file-fixer
+        types: [text]
+        exclude: \.py$  # Excludes all Python files
+        stages: [pre-commit, pre-push, manual]
+
+      - id: mixed-line-ending
+        name: Mixed line ending
+        description: Replaces or checks mixed line endings
+        entry: mixed-line-ending
+        args: [--fix=lf]
+        types: [text]
+
+      - id: no-commit-to-branch
+        name: Don't commit to branch
+        description: Prevent commits to protected branches (e.g. `main`)
+        entry: no-commit-to-branch
+        args: [--branch=main,--branch=master]
+        pass_filenames: false
+        always_run: true
+
+      - id: trailing-whitespace
+        name: Trim trailing whitespace
+        description: Trims trailing whitespace
+        entry: trailing-whitespace-fixer
+        types: [text]
+        stages: [pre-commit, pre-push, manual]
+
+      - id: check-yaml
+        name: Check YAML files
+        description: Validate YAML syntax
+        entry: check-yaml
+        args: [--unsafe]
+
+      - id: check-json
+        name: Check JSON files
+        description: Validate JSON syntax
+        entry: check-json
+        args: [--no-sort-keys]
+
+      - id: check-toml
+        name: Check TOML files
+        description: Validate TOML syntax
+        entry: check-toml
+
+      - id: detect-private-key
+        name: Detect private key
+        description: Detects accidental commits of private keys
+        entry: detect-private-key
+
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.7.9
+    hooks:
+      - id: uv-lock
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev:  v0.11.13
+    hooks:
+      - id: ruff
+        name: Ruff Linter
+        types_or: [ python, pyi ]
+        args:
+          - --fix
+          - --exit-non-zero-on-fix
+          - --target-version=py312
+          - --ignore=E203
+      - id: ruff-format
+        name: Ruff Formatter
+        types_or: [ python, pyi ]
+        args:
+          - --target-version=py312
+
+  - repo: https://github.com/asottile/add-trailing-comma
+    rev: v3.2.0
+    hooks:
+      - id: add-trailing-comma
+        name: Add trailing comma
+        entry: add-trailing-comma
+        args: [--py36-plus]
+
+  # - repo: https://github.com/pre-commit/mirrors-mypy
+  #   rev: v1.13.0
+  #   hooks:
+  #     - id: mypy
+  #       name: Mypy Type Checker
+  #       entry: mypy
+  #       args:
+  #         - --ignore-missing-imports
+  #         - --disallow-untyped-defs
+  #         - --check-untyped-defs
+  #         - --warn-redundant-casts
+  #         - --warn-unused-ignores
+  #         - --warn-return-any
+  #         - --strict-optional
+  #         - --strict-equality
+  #         - --no-implicit-optional
+  #         - --disallow-incomplete-defs
+  #         - --disallow-untyped-decorators
+  #         - --disallow-any-generics
+  #         - --disallow-subclassing-any
+  #         - --disallow-any-explicit
+  #         - --disallow-any-expr
+  #         - --disallow-any-unimported
+  #       exclude: docs
+
+  # - repo: https://github.com/prettier/prettier
+  #   rev: 2.1.2
+  #   hooks:
+  #     - id: prettier
+  #       name: Prettier Formatter
+  #       entry: prettier
+
+  # - repo: local
+  #   hooks:
+  #     - id: check-commit-message-prefix
+  #       name: Check commit message starts with allowed prefix
+  #       entry: bash -c '[[ "$1" =~ ^(chore:|docs:|test:|bug:) ]]' --
+  #       language: system
+  #       stages: [commit-msg]
+  #       pass_filenames: false
