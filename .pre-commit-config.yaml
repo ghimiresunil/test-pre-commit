@@ -128,6 +128,7 @@ repos:
       - id: conventional-commit-prefix
         name: Enforce Conventional Commit Prefix
         language: pygrep
-        entry: '\A(?!((feat|fix|chore|docs|style|refactor|perf|test|ci|build|revert)(\(.+\))?:\s)).*'
-        args: [--multiline]
+        entry: '^(feat|fix|chore|docs|style|refactor|perf|test|ci|build|revert)(\(.+\))?:\s'
+        args: [--negate]
+        types: [text]
         stages: [commit-msg]
