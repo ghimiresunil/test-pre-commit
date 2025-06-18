@@ -123,13 +123,21 @@ repos:
           - --disallow-untyped-defs # disallow functions without type annotations
         exclude: docs
 
-  - repo: local
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v4.2.0
     hooks:
-      - id: conventional-commit-prefix
-        name: Enforce Conventional Commit Prefix
-        language: pygrep
-        entry: '^(feat|fix|chore|docs|style|refactor|perf|test|ci|build|revert)(\([a-z0-9-]+\))?: [a-zA-Z0-9]'
-        args: [--multiline, --negate]
+      - id: conventional-pre-commit
+        name: Git Conventional Commit Message
         stages: [commit-msg]
-        pass_filenames: false
-        verbose: true
+        args: [--strict, --force-scope, feat, fix, chore, refactor, docs, style, test, perf, ci, build, revert]
+
+  # - repo: local
+  #   hooks:
+  #     - id: conventional-commit-prefix
+  #       name: Enforce Conventional Commit Prefix
+  #       language: pygrep
+  #       entry: '^(feat|fix|chore|docs|style|refactor|perf|test|ci|build|revert)(\([a-z0-9-]+\))?: [a-zA-Z0-9]'
+  #       args: [--multiline, --negate]
+  #       stages: [commit-msg]
+  #       pass_filenames: false
+  #       verbose: true
