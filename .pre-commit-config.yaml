@@ -130,5 +130,5 @@ repos:
         language: pygrep
         entry: '^(feat|fix|chore|docs|style|refactor|perf|test|ci|build|revert)(\(.+\))?:\s'
         args: [--negate]
-        types: [text]
         stages: [commit-msg]
+        pass_filenames: false
