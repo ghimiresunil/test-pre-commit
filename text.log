@@ -1,0 +1,89 @@
+### version information
+
+```
+pre-commit version: 4.2.0
+git --version: git version 2.43.0
+sys.version:
+    3.12.3 (main, May 26 2025, 18:50:19) [GCC 13.3.0]
+sys.executable: /home/fm-pc-lt-227/Documents/personal/PyFoundry/.venv/bin/python3
+os.name: posix
+sys.platform: linux
+```
+
+### error information
+
+```
+An unexpected error has occurred: CalledProcessError: command: ('/home/fm-pc-lt-227/.cache/pre-commit/repoy54h41j4/node_env-default/bin/node', '/home/fm-pc-lt-227/.cache/pre-commit/repoy54h41j4/node_env-default/bin/npm', 'install', '--include=dev', '--include=prod', '--ignore-prepublish', '--no-progress', '--no-save')
+return code: 1
+stdout: (none)
+stderr:
+    npm warn Unknown cli config "--ignore-prepublish". This will stop working in the next major version of npm.
+    npm error code ERESOLVE
+    npm error ERESOLVE unable to resolve dependency tree
+    npm error
+    npm error While resolving: prettier@2.1.2
+    npm error Found: remark-parse@8.0.3
+    npm error node_modules/remark-parse
+    npm error   remark-parse@"8.0.3" from the root project
+    npm error
+    npm error Could not resolve dependency:
+    npm error peer remark-parse@"^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0" from remark-math@1.0.6
+    npm error node_modules/remark-math
+    npm error   remark-math@"1.0.6" from the root project
+    npm error
+    npm error Fix the upstream dependency conflict, or retry
+    npm error this command with --force or --legacy-peer-deps
+    npm error to accept an incorrect (and potentially broken) dependency resolution.
+    npm error
+    npm error
+    npm error For a full report see:
+    npm error /home/fm-pc-lt-227/.npm/_logs/2025-06-17T14_33_25_063Z-eresolve-report.txt
+    npm error A complete log of this run can be found in: /home/fm-pc-lt-227/.npm/_logs/2025-06-17T14_33_25_063Z-debug-0.log
+```
+
+```
+Traceback (most recent call last):
+  File "/home/fm-pc-lt-227/Documents/personal/PyFoundry/.venv/lib/python3.12/site-packages/pre_commit/error_handler.py", line 73, in error_handler
+    yield
+  File "/home/fm-pc-lt-227/Documents/personal/PyFoundry/.venv/lib/python3.12/site-packages/pre_commit/main.py", line 417, in main
+    return run(args.config, store, args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fm-pc-lt-227/Documents/personal/PyFoundry/.venv/lib/python3.12/site-packages/pre_commit/commands/run.py", line 442, in run
+    install_hook_envs(to_install, store)
+  File "/home/fm-pc-lt-227/Documents/personal/PyFoundry/.venv/lib/python3.12/site-packages/pre_commit/repository.py", line 229, in install_hook_envs
+    _hook_install(hook)
+  File "/home/fm-pc-lt-227/Documents/personal/PyFoundry/.venv/lib/python3.12/site-packages/pre_commit/repository.py", line 85, in _hook_install
+    lang.install_environment(
+  File "/home/fm-pc-lt-227/Documents/personal/PyFoundry/.venv/lib/python3.12/site-packages/pre_commit/languages/node.py", line 99, in install_environment
+    lang_base.setup_cmd(prefix, local_install_cmd)
+  File "/home/fm-pc-lt-227/Documents/personal/PyFoundry/.venv/lib/python3.12/site-packages/pre_commit/lang_base.py", line 86, in setup_cmd
+    cmd_output_b(*cmd, cwd=prefix.prefix_dir, **kwargs)
+  File "/home/fm-pc-lt-227/Documents/personal/PyFoundry/.venv/lib/python3.12/site-packages/pre_commit/util.py", line 111, in cmd_output_b
+    raise CalledProcessError(returncode, cmd, stdout_b, stderr_b)
+pre_commit.util.CalledProcessError: command: ('/home/fm-pc-lt-227/.cache/pre-commit/repoy54h41j4/node_env-default/bin/node', '/home/fm-pc-lt-227/.cache/pre-commit/repoy54h41j4/node_env-default/bin/npm', 'install', '--include=dev', '--include=prod', '--ignore-prepublish', '--no-progress', '--no-save')
+return code: 1
+stdout: (none)
+stderr:
+    npm warn Unknown cli config "--ignore-prepublish". This will stop working in the next major version of npm.
+    npm error code ERESOLVE
+    npm error ERESOLVE unable to resolve dependency tree
+    npm error
+    npm error While resolving: prettier@2.1.2
+    npm error Found: remark-parse@8.0.3
+    npm error node_modules/remark-parse
+    npm error   remark-parse@"8.0.3" from the root project
+    npm error
+    npm error Could not resolve dependency:
+    npm error peer remark-parse@"^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0" from remark-math@1.0.6
+    npm error node_modules/remark-math
+    npm error   remark-math@"1.0.6" from the root project
+    npm error
+    npm error Fix the upstream dependency conflict, or retry
+    npm error this command with --force or --legacy-peer-deps
+    npm error to accept an incorrect (and potentially broken) dependency resolution.
+    npm error
+    npm error
+    npm error For a full report see:
+    npm error /home/fm-pc-lt-227/.npm/_logs/2025-06-17T14_33_25_063Z-eresolve-report.txt
+    npm error A complete log of this run can be found in: /home/fm-pc-lt-227/.npm/_logs/2025-06-17T14_33_25_063Z-debug-0.log
+```
