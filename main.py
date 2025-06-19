@@ -1,8 +1,13 @@
-def add(x: int, y: int) -> int:
-    result: int = x + y
-    return result
+"""Module for greeting functionality."""
 
 
 def greet(name: str) -> str:
-    message: str = f"Hello, {name}!"
-    return message
+    """Function to greet a person.
+
+    Args:
+        name (str): The name to greet
+
+    Returns:
+        str: A greeting message.
+    """
+    return f"Hello, {name}!"
